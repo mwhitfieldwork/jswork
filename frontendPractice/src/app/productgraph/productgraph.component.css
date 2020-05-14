@@ -1,0 +1,49 @@
+.bar-container {
+    display:flex;
+    justify-content: space-between;
+    width: 500px;
+    border:1px solid #ccc;
+}
+
+.verticle-bar-container {
+    position: relative;
+    overflow: hidden;
+    height: 75px;
+    margin-top: -24px;
+    width: 20px;
+}
+
+.bar {
+    background-color:red;
+    width:100%;
+    background-color: #b3e1c2;
+    opacity: 0.5;
+    position: absolute;
+    bottom: 0;
+    margin: 1px;
+    display: inline-block;
+    transform: rotate(180deg) scaleX(-1);
+}
+
+.name{
+    position: absolute;
+    bottom:0;
+    transform: rotate(180deg)
+}
+
+#product-bar{
+    margin: 55px 0;
+}
+
+.dot-container {
+    width: 500px;
+    border:1px solid #ccc;
+}
+
+.dot{
+    width:20px;
+    height:20px;
+    border-radius: 50%;
+    background-color: #00ccff;
+    display: inline-block;
+}

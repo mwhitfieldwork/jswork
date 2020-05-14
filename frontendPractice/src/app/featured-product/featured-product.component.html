@@ -1,0 +1,11 @@
+<table>
+    <th>test</th>
+    <tr *ngFor="let data of featureds">
+      <td >{{data.Id}}</td>
+      <td>{{data.CatagoryName}}</td>
+      <td>{{data.Name}}</td>
+      <td>{{data.Price}}</td>
+      <td ><a [routerLink]="'/featured/list/'+ data.Id">view feature</a></td>
+    </tr>
+    <tr class="hidden">test</tr>
+  </table>

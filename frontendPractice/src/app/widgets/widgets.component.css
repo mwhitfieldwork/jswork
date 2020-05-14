@@ -1,0 +1,43 @@
+.filter {
+    position: absolute;
+    z-index: 3;
+    top: 2px;
+    left: 88px;
+    height: 13px;
+    width: 226px;
+    border: 0;
+    border-right: 1px solid #d1d1d1;
+}
+
+.filter:focus {outline:0;}
+
+.dropdown-label{
+    position: relative;
+    display: flex;
+    width:336px;
+}
+
+label {
+    font-weight:normal;
+}
+
+strong {
+width:75px;
+margin-right:10px;
+display:inline-block;
+position: absolute;
+top:3px;
+}
+
+select {
+    margin-left:auto;
+}
+
+label {
+    display:block;
+    position: relative;
+}
+
+.select-selected {
+    width:250px;
+}

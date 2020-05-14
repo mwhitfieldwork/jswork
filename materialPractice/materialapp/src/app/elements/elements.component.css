@@ -1,0 +1,14 @@
+.page{
+
+}
+
+#container {
+    display:flex;
+    justify-content: center;
+    width:1000px;
+}
+
+.table-container{
+    display:flex;
+    /* width:300px; */
+}

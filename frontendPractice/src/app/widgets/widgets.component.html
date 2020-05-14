@@ -1,0 +1,16 @@
+<p>
+  widgets works!
+</p>
+<!-- <select [(ngModel)]="selectedProduct">
+  <option *ngFor="let item of items">{{item.Name}}</option>
+</select> -->
+
+<label class="dropdown-label"  ><strong>{{Label}}</strong>
+  <input class="listItemInput filter" (input)="comboOpen($event.target.value)" type="text" name="term" [(ngModel)]="term" autocomplete="off" autofocus="false" [value]="selectedProduct" placeholder="narrow results here" />
+  <select class="custom-selection select-selected" [(ngModel)]="selectedProduct" (change)="selectComboData($event.target.value)" [multiple]="opencombo ? 'multiple' : '' ">
+      <option value=""></option>
+      <option *ngFor="let item of items | itemsfilter:term" [value]="item | json" >{{item.Name || item.Text}}</option>
+  </select>
+</label>
+
+{{selectedProduct}}

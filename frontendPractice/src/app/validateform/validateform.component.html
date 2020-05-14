@@ -1,0 +1,120 @@
+<h1>Form Validation</h1>
+<form novalidate #form="ngForm" (ngSubmit)="testObj()">
+
+<div>{{selectValue || none}}</div>
+  
+<select (change)="selectValue=$event.target.value; getSelectData($event.target.value)" class="custom-selection select-selected" style="width:200px;">
+  <option *ngFor="let role of roleList" class="select-items" >{{role.role}}</option>
+</select>
+
+<select (change)="selectValue=$event.target.value; getSelectDataNonObj($event.target.value)" class="custom-selection select-selected " style="width:200px;">
+    <option *ngFor="let role of roleListNonObject"  class="select-items">{{role}}</option>
+</select>
+
+<style>
+    input.ng-dirty.ng-invalid { border: 2px solid #ff0000 }
+    input.ng-dirty.ng-valid { border: 2px solid #6bc502 }
+</style>
+
+<div class="m-2" style="width:25%">
+    <div class="bg-info text-white mb-2 p-2">Model Data: {{jsonProduct}}</div>
+    <div class="form-group">
+      <label>Name{{formObj.name}}</label>
+      <input #name="ngModel" class="form-control" name="name" [(ngModel)]="formObj.name" required pattern="^[A-Za-z ]+$" autocomplete="off"/>
+
+      <!--Validation options-->
+      <ul class="text-danger list-unstyled" *ngIf="name.dirty && name.invalid">
+          <li *ngFor="let error of getValidationMessages(name)">
+              {{error}}
+           </li>
+        </ul>
+      <!--Validation options--> 
+    </div>
+    <div class="form-group">
+      <label>Category</label>
+      <input #category="ngModel"  class="form-control" name="category" [(ngModel)]="formObj.cat"  required pattern="^[A-Za-z ]+$"  autocomplete="off"/>
+      
+      <!--Validation options-->
+      <ul class="text-danger list-unstyled" *ngIf="category.dirty && category.invalid">
+          <li *ngFor="let error of getValidationMessages(category)">
+              {{error}}
+           </li>
+        </ul>
+      <!--Validation options--> 
+
+    </div>
+    <div class="form-group" >
+      <label>Price</label>
+      <input #price="ngModel"  class="form-control" name="price" [(ngModel)]="formObj.price"  autocomplete="off" required pattern="\d{1,3}" />
+    </div>
+    <button class="btn btn-primary" type="submt" [disabled]="form.invalid" >Build Obj</button>
+    <!-- <button class="btn btn-primary" (click)="addProduct(newProduct)">Create</button> -->
+  </div>
+</form>
+
+<h1>Product Form</h1>
+
+<form novalidate #productForm="ngForm" (ngSubmit)="submitData(productForm)" style="width:25%">
+    <div class="form-group">
+      <label>Name</label>
+      <input #name="ngModel"  class="form-control" name="name" [(ngModel)]="product.Name"  autocomplete="off" required pattern="^[A-Za-z ]+$" />
+    </div>
+    <div class="form-group">
+      <label>Image</label>
+      <input #image="ngModel"  class="form-control" name="image" [(ngModel)]="product.ImageUrl"  autocomplete="off" required pattern="^[A-Za-z ]+$" />
+    </div>
+    <div class="form-group">
+      <label>Summary</label>
+      <input #summary="ngModel"  class="form-control" name="summary" [(ngModel)]="product.Summary"  autocomplete="off" required pattern="^[A-Za-z ]+$" />
+    </div>   
+    <div class="form-group">
+      <label>Latitude</label>
+      <input #latitude="ngModel"  class="form-control" name="lat" [(ngModel)]="product.Latitude"  autocomplete="off" required pattern="^\d+(\.\d{1,2})?$" />
+    </div>                 
+    <div class="form-group">
+      <label>Longitude</label>
+      <input #longitude="ngModel"  class="form-control" name="long" [(ngModel)]="product.Longitude"  autocomplete="off" required pattern="\d{1,3}" />
+    </div> 
+    <div class="form-group">
+      <label>Price</label>
+      <input #price="ngModel"  class="form-control" name="price" [(ngModel)]="product.Price"  autocomplete="off" required pattern="\d{1,3}" />
+    </div> 
+    <div class="form-group">
+      <label>Category</label>
+      <select  #category (change)="selectValue=$event.target.value; getSelectDataNonObj($event.target.value)" class="custom-selection select-selected " style="width:200px;" name="category" [(ngModel)]="product.CategoryId" >
+        <option  *ngFor="let category of categories"  class="select-items" [value]="category.Id">{{category.Name}}</option>
+    </select>
+    </div>   
+    <button class="btn btn-primary" type="submt">Add Product</button>        
+</form>
+
+<!-- <mat-form-field>
+  <mat-select (change)="getSelectData($event.target.value)" class="custom-selection select-selected" style="width:200px;">
+      <mat-option *ngFor="let role of roleList" class="select-items" >{{role.role}}</mat-option>
+  </mat-select>
+
+    <mat-select (change)="getSelectDataNonObj($event.target.value)" class="custom-selection select-selected " style="width:200px;">
+        <mat-option *ngFor="let role of roleListNonObject"  class="select-items">{{role}}</mat-option>
+    </mat-select>
+  </mat-form-field> -->
+  <!-- <form>
+    <mat-form-field>
+      <mat-select placeholder="Clients" [(ngModel)]="selectedValue" name="food" (change)="changeClient($event.value)">
+        <mat-option *ngFor="let client of clients" [value]="client.id">
+          {{client.clientName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <br/>
+  
+      <mat-form-field>
+      <mat-select placeholder="Clients" [(ngModel)]="selectedValue" name="food" (change)="changeClient2($event.value)">
+        <mat-option *ngFor="let client of clients; let i = index;" [value]="i">
+          {{client.clientName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <p> Selected value: {{selectedValue}} </p>
+  </form> -->

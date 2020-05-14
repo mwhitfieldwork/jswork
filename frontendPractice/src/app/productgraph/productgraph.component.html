@@ -1,0 +1,19 @@
+<p>
+  productgraph works!
+</p>
+<!-- verticle bar-->
+<div id="product-bar">
+  <div class="bar-container">
+    <div class="verticle-bar-container" *ngFor="let product of productData">
+      <div class="bar" bar   [price]="product" [ngStyle]="{'height': product.Price + 'px'}"></div>
+      <div class="name"><span>{{product.Name}}</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- scatter chart CSS-->
+<div id="product-bar">
+  <div class="dot-container">
+      <div class="" *ngFor="let product of productData" class="dot" bar   [price]="product" [ngStyle]="{'transform': 'translate('+ product.Price + 'px)'}"></div>
+  </div>
+</div>
